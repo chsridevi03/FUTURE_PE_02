@@ -1,0 +1,193 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .pack { padding: 1.5rem 0; max-width: 860px; }
+  .brand-header { display: flex; align-items: center; gap: 14px; margin-bottom: 2rem; padding-bottom: 1.25rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .brand-dot { width: 44px; height: 44px; border-radius: 50%; background: #E1F5EE; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .brand-title { font-size: 20px; font-weight: 500; color: var(--color-text-primary); }
+  .brand-sub { font-size: 13px; color: var(--color-text-secondary); margin-top: 2px; }
+
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .tab { padding: 7px 16px; border-radius: 20px; font-size: 13px; cursor: pointer; border: 0.5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-secondary); transition: all 0.15s; }
+  .tab:hover { background: var(--color-background-secondary); }
+  .tab.active { background: #0F6E56; color: #fff; border-color: #0F6E56; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: var(--color-text-tertiary); text-transform: uppercase; margin-bottom: 1rem; }
+
+  .hook-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+  .hook-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px 16px; }
+  .hook-num { font-size: 11px; font-weight: 500; color: #0F6E56; margin-bottom: 6px; }
+  .hook-text { font-size: 14px; color: var(--color-text-primary); line-height: 1.5; }
+  .hook-tag { display: inline-block; margin-top: 8px; font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #E1F5EE; color: #0F6E56; }
+
+  .script-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .script-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 12px; }
+  .script-step { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+  .step-badge { min-width: 80px; font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 8px; background: var(--color-background-secondary); color: var(--color-text-secondary); text-align: center; margin-top: 2px; }
+  .step-text { font-size: 14px; color: var(--color-text-primary); line-height: 1.6; }
+  .script-meta { margin-top: 14px; padding-top: 12px; border-top: 0.5px solid var(--color-border-tertiary); display: flex; flex-wrap: wrap; gap: 8px; }
+  .meta-pill { font-size: 12px; padding: 4px 10px; border-radius: 10px; }
+  .meta-camera { background: #E6F1FB; color: #185FA5; }
+  .meta-broll { background: #FAEEDA; color: #854F0B; }
+  .meta-bg { background: #EEEDFE; color: #3C3489; }
+
+  .cta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+  .cta-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px 16px; }
+  .cta-type { font-size: 11px; font-weight: 500; margin-bottom: 6px; padding: 2px 8px; border-radius: 8px; display: inline-block; }
+  .cta-soft { background: #E1F5EE; color: #0F6E56; }
+  .cta-urgency { background: #FCEBEB; color: #A32D2D; }
+  .cta-curiosity { background: #EEEDFE; color: #3C3489; }
+  .cta-offer { background: #FAEEDA; color: #854F0B; }
+  .cta-social { background: #E6F1FB; color: #185FA5; }
+  .cta-text { font-size: 14px; color: var(--color-text-primary); line-height: 1.5; }
+
+  .caption-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 10px; }
+  .caption-label { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 8px; }
+  .caption-text { font-size: 14px; color: var(--color-text-primary); line-height: 1.7; white-space: pre-line; }
+  .hashtags { margin-top: 8px; font-size: 13px; color: #185FA5; }
+
+  .divider { height: 0.5px; background: var(--color-border-tertiary); margin: 1.25rem 0; }
+</style>
+
+<div class="pack">
+  <div class="brand-header">
+    <div class="brand-dot">🍊</div>
+    <div>
+      <div class="brand-title">GlowSkin Naturals — UGC Ad Content Pack</div>
+      <div class="brand-sub">Vitamin C Face Serum · Instagram Reels + TikTok · 18–30 audience</div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('hooks')">Hooks (10)</button>
+    <button class="tab" onclick="showTab('scripts')">Ad Scripts (3)</button>
+    <button class="tab" onclick="showTab('ctas')">CTA Variations (5)</button>
+    <button class="tab" onclick="showTab('captions')">Captions (3)</button>
+  </div>
+
+  <!-- HOOKS -->
+  <div class="section active" id="hooks">
+    <div class="section-label">10 scroll-stopping hooks · first 3 seconds</div>
+    <div class="hook-grid">
+      <div class="hook-card"><div class="hook-num">Hook 01</div><div class="hook-text">"POV: you finally found something that actually faded your acne marks 😭"</div><span class="hook-tag">Pain point</span></div>
+      <div class="hook-card"><div class="hook-num">Hook 02</div><div class="hook-text">"I was NOT expecting this from a ₹500 serum ngl"</div><span class="hook-tag">Shock</span></div>
+      <div class="hook-card"><div class="hook-num">Hook 03</div><div class="hook-text">"My skin looked like this 3 weeks ago… wait till you see now 👀"</div><span class="hook-tag">Curiosity</span></div>
+      <div class="hook-card"><div class="hook-num">Hook 04</div><div class="hook-text">"Stop scrolling. If you have dull skin, this is literally for you."</div><span class="hook-tag">Direct</span></div>
+      <div class="hook-card"><div class="hook-num">Hook 05</div><div class="hook-text">"I cried a little when I saw my before-and-after. No joke."</div><span class="hook-tag">Emotion</span></div>
+      <div class="hook-card"><div class="hook-num">Hook 06</div><div class="hook-text">"The one thing I added to my routine that changed EVERYTHING 🧴"</div><span class="hook-tag">Curiosity</span></div>
+      <div class="hook-card"><div class="hook-num">Hook 07</div><div class="hook-text">"Why does nobody talk about this vitamin C serum?? My skin is GLOWING."</div><span class="hook-tag">Social proof</span></div>
+      <div class="hook-card"><div class="hook-num">Hook 08</div><div class="hook-text">"Honest review of GlowSkin Naturals after 21 days of using it every day."</div><span class="hook-tag">Trust</span></div>
+      <div class="hook-card"><div class="hook-num">Hook 09</div><div class="hook-text">"My flatmate asked what filter I was using. It was just my skin 😭✨"</div><span class="hook-tag">Relatable</span></div>
+      <div class="hook-card"><div class="hook-num">Hook 10</div><div class="hook-text">"I spent years stressing over acne marks and I wish I found this sooner."</div><span class="hook-tag">Regret/Pain</span></div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <div class="section" id="scripts">
+    <div class="section-label">3 full UGC ad scripts with production notes</div>
+
+    <div class="script-card">
+      <div class="script-title">Script 01 — "The Flatmate Compliment"</div>
+      <div class="script-step"><div class="step-badge">Hook</div><div class="step-text">"Okay so my flatmate literally asked me what filter I had on — and I had no filter on. I need to tell you what happened."</div></div>
+      <div class="script-step"><div class="step-badge">Problem</div><div class="step-text">"My skin was SO dull. Like, I'd wake up every morning and look like I hadn't slept in three days. Acne marks from college stress, uneven tone, the works. Tried like five different things — nothing really stuck."</div></div>
+      <div class="script-step"><div class="step-badge">Discovery</div><div class="step-text">"Then I saw someone on here raving about this GlowSkin Naturals Vitamin C serum. I was skeptical okay, I've been burned before. But I figured — it's not that expensive, let me just try it for a month."</div></div>
+      <div class="script-step"><div class="step-badge">Experience</div><div class="step-text">"So I just started putting two drops on every night after I wash my face. It's not complicated at all. The texture is light, no sticky feeling. I literally forgot I was using a 'skincare product' — it just became part of brushing my teeth."</div></div>
+      <div class="script-step"><div class="step-badge">Result</div><div class="step-text">"Week two — I noticed my skin tone starting to even out. Week three — my old marks visibly faded. Week four — flatmate comment. That's the story."</div></div>
+      <div class="script-step"><div class="step-badge">CTA</div><div class="step-text">"Link is in my bio if you wanna try it. They have a starter kit thing which is what I got. Okay bye 😭"</div></div>
+      <div class="script-meta">
+        <span class="meta-pill meta-camera">📷 Selfie cam, bathroom mirror</span>
+        <span class="meta-pill meta-broll">🎬 B-roll: 2 drops on fingertips, patting on cheeks, close-up of skin texture</span>
+        <span class="meta-pill meta-bg">🏠 Background: bathroom, natural morning light</span>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-title">Script 02 — "The Before-After I Didn't Expect"</div>
+      <div class="script-step"><div class="step-badge">Hook</div><div class="step-text">"I took a before photo as a joke. The after photo made me want to cry a little."</div></div>
+      <div class="script-step"><div class="step-badge">Problem</div><div class="step-text">"Okay real talk — I have these acne marks that have been on my face since literally 10th grade. Not active breakouts anymore, just the leftover marks that refuse to leave. I'd pile on concealer every day and still feel self-conscious in like, natural light."</div></div>
+      <div class="script-step"><div class="step-badge">Discovery</div><div class="step-text">"My cousin kept telling me to try a Vitamin C serum. I kept ignoring her because I thought it was just a hype thing. She literally bought me a bottle of GlowSkin Naturals and said just try it for three weeks."</div></div>
+      <div class="script-step"><div class="step-badge">Experience</div><div class="step-text">"I used it every morning. Just a few drops, patted it in, then my moisturiser on top. That's it. There was no big dramatic routine change. It smells kinda citrusy which I actually love."</div></div>
+      <div class="script-step"><div class="step-badge">Result</div><div class="step-text">"Three weeks in, I put my before photo next to my face in the mirror. The difference in my skin tone and those marks — I actually sent a voice note to my cousin apologising for not listening earlier. My skin is brighter, the marks are lighter, and I've been going out without foundation more. Wild."</div></div>
+      <div class="script-step"><div class="step-badge">CTA</div><div class="step-text">"I'll leave the link below. If you've got old marks like me — genuinely give it a shot. Worked for me."</div></div>
+      <div class="script-meta">
+        <span class="meta-pill meta-camera">📷 Close-up selfie cam, side lighting</span>
+        <span class="meta-pill meta-broll">🎬 B-roll: before/after side-by-side, serum bottle on counter, applying in mirror</span>
+        <span class="meta-pill meta-bg">🏠 Background: bedroom windowsill, golden hour natural light</span>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-title">Script 03 — "The Lazy Girl Who Got Results"</div>
+      <div class="script-step"><div class="step-badge">Hook</div><div class="step-text">"I do the laziest skincare routine possible and my skin has never looked better. This is the one thing I use."</div></div>
+      <div class="script-step"><div class="step-badge">Problem</div><div class="step-text">"Look I'm a final year student. I'm not doing a 12-step routine okay. But I was genuinely bothered by how grey and tired my skin looked in photos. Like even on good days my skin just looked dull. No glow. Nothing."</div></div>
+      <div class="script-step"><div class="step-badge">Discovery</div><div class="step-text">"I was doom scrolling at 2am and kept seeing people talk about GlowSkin Naturals Vitamin C serum. The reviews said it was simple to use, no complicated steps. That's literally all I needed to hear. Ordered it that night."</div></div>
+      <div class="script-step"><div class="step-badge">Experience</div><div class="step-text">"My whole routine is now: wash face, two drops of this serum, moisturiser, done. Takes like 90 seconds. I do it at night mostly, sometimes morning if I remember. It's not fussy at all — the serum absorbs fast, doesn't pill under makeup."</div></div>
+      <div class="script-step"><div class="step-badge">Result</div><div class="step-text">"After about two to three weeks I genuinely started getting that kind of glow I used to think only people with good genes had. My skin tone evened out and my old marks started fading. I've had three people ask me what I'm doing differently. I feel like I discovered a secret."</div></div>
+      <div class="script-step"><div class="step-badge">CTA</div><div class="step-text">"Honestly if you're lazy about skincare like me, this is perfect. Link below — they've got a discount on the starter bottle. Don't think too hard about it."</div></div>
+      <div class="script-meta">
+        <span class="meta-pill meta-camera">📷 Handheld selfie, casual angle, slightly tilted</span>
+        <span class="meta-pill meta-broll">🎬 B-roll: serum bottle next to phone and charger, quick apply over sink, glow skin close-up</span>
+        <span class="meta-pill meta-bg">🏠 Background: messy-but-cute dorm desk, warm lamp light</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTAs -->
+  <div class="section" id="ctas">
+    <div class="section-label">5 CTA variations for every conversion goal</div>
+    <div class="cta-grid">
+      <div class="cta-card"><span class="cta-type cta-soft">Soft CTA</span><div class="cta-text">"If you're curious, the link's in my bio. No pressure — I just wish I'd tried it sooner."</div></div>
+      <div class="cta-card"><span class="cta-type cta-urgency">Urgency CTA</span><div class="cta-text">"They're running a limited intro offer right now — honestly just grab it before it's gone. Link below."</div></div>
+      <div class="cta-card"><span class="cta-type cta-curiosity">Curiosity CTA</span><div class="cta-text">"Drop a ✨ in the comments and I'll DM you exactly what I've been using."</div></div>
+      <div class="cta-card"><span class="cta-type cta-offer">Offer CTA</span><div class="cta-text">"Use the code in my bio for a discount on your first bottle. I saved money, you save money. Win-win."</div></div>
+      <div class="cta-card"><span class="cta-type cta-social">Social Proof CTA</span><div class="cta-text">"50,000 people have tried this. I was skeptical too — now I get it. Link in bio."</div></div>
+    </div>
+  </div>
+
+  <!-- CAPTIONS -->
+  <div class="section" id="captions">
+    <div class="section-label">3 captions ready to post</div>
+
+    <div class="caption-card">
+      <div class="caption-label">Caption 01 · Relatable/Emotional</div>
+      <div class="caption-text">spent years hiding behind concealer because of acne marks that wouldn't leave 😔 then i tried one thing and my whole skin situation changed. took 3 weeks. genuinely didn't expect it to work this fast. still kinda shocked tbh ✨
+
+link in bio if you wanna try it — they have a starter kit that's honestly really affordable 🍊</div>
+      <div class="hashtags">#GlowSkinNaturals #VitaminCSerum #AcneMarks #SkincareRoutine #GlowUp</div>
+    </div>
+
+    <div class="caption-card">
+      <div class="caption-label">Caption 02 · Casual/Lazy girl</div>
+      <div class="caption-text">my skincare routine is literally 3 steps and my skin is the best it's ever been 😭 no 12-step thing. no expensive appointments. just this vitamin c serum doing all the heavy lifting while i sleep lol
+
+lazy girls rise 🙌 link below ✨</div>
+      <div class="hashtags">#LazySkincareRoutine #GlowSkinNaturals #CollegeSkincareRoutine #SkincareSimple #DullSkinFix</div>
+    </div>
+
+    <div class="caption-card">
+      <div class="caption-label">Caption 03 · Social proof/Trust</div>
+      <div class="caption-text">real review after 21 days of using GlowSkin Naturals vitamin c serum every night 👇
+
+✅ marks faded
+✅ tone evened out  
+✅ skin actually glows in natural light
+✅ no flatmate filter needed lol
+
+was not expecting this. the link is in my bio — they have an offer on right now 🍊✨</div>
+      <div class="hashtags">#HonestReview #VitaminCGlow #GlowSkinNaturals #SkincareResults #ClearSkinJourney</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
